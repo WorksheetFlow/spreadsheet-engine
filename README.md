@@ -1,37 +1,45 @@
 # Spreadsheet Engine
 
-A standalone, UI-independent spreadsheet engine for Worksheet Flow.
+A standalone, TypeScript-first spreadsheet core intended to power WorksheetFlow and other consumers. The engine is UI-agnostic and runtime-independent.
 
-## Goals
-- Provide a stable, testable workbook model and spreadsheet operations.
-- Keep rendering, UI state, desktop APIs, and workflow-specific behavior out of the engine.
-- Make data model and calculation behavior explicit and testable.
-- Evolve incrementally; this is not an Excel compatibility project at the outset.
 
 ## Status
-**Early development / foundation.** The current scaffold contains the initial domain types and basic operations. Formula evaluation, file-format interoperability, and advanced spreadsheet features are not implemented yet.
 
-## Development
-Requirements: Node.js 22+ and pnpm 9+.
+Foundation setup is in progress. This repository currently contains tooling and architecture scaffolding; spreadsheet features are not implemented yet.
 
-```bash
- pnpm install
- pnpm test
- pnpm typecheck
- pnpm build
+## Prerequisites
+
+- Node.js 22+
+- pnpm 10+
+
+Enable pnpm through Corepack if needed:
+
+```sh
+corepack enable
+corepack prepare pnpm@10.10.0 --activate
 ```
 
-## Initial boundaries
-Included: workbook/worksheet/cell/range model; basic value types; basic cell operations; validation; future calculation and import/export boundaries.
-Excluded: UI, canvas/rendering, desktop integration, workflow packs, persistence UX, and application-level undo/redo.
+## Setup
 
-## Project layout
-- `src/model`: domain structures
-- `src/operations`: engine-level operations
-- `src/types`: shared value and result types
-- `tests`: behavior tests
-- `docs`: design notes and API direction
-- `examples`: usage examples
+```sh
+pnpm install
+```
 
-## License
-MIT. See [LICENSE](LICENSE).
+## Scripts
+
+- `pnpm build` — build the Engine package
+- `pnpm test` — run tests
+- `pnpm test:watch` — watch tests
+- `pnpm typecheck` — TypeScript checks
+- `pnpm lint` — lint source and configuration
+- `pnpm format` — format files
+- `pnpm format:check` — check formatting
+
+## Module layout
+
+The Engine source is organized by domain responsibility under `packages/engine/src`. The formal module boundaries and dependency rules are documented in `docs/architecture/module-boundaries.md`.
+
+
+## Non-goals of the foundation stage
+
+No spreadsheet model, formula evaluator, import/export, grid UI, workflow runtime, or desktop integration is implemented in this stage.

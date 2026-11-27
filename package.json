@@ -1,22 +1,27 @@
 {
-  "name": "@worksheetflow/spreadsheet-engine",
-  "version": "0.1.0",
-  "description": "Standalone spreadsheet core engine for Worksheet Flow",
-  "license": "MIT",
-  "type": "module",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" } },
-  "files": ["dist", "README.md", "LICENSE"],
+  "name": "spreadsheet-engine-workspace",
+  "private": true,
+  "version": "0.0.1",
+  "packageManager": "pnpm@10.10.0",
+  "engines": { "node": ">=22.0.0" },
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
-    "typecheck": "tsc --noEmit",
+    "build": "pnpm --filter @worksheet-flow/spreadsheet-engine build",
     "test": "vitest run",
     "test:watch": "vitest",
-    "clean": "rm -rf dist"
+    "typecheck": "tsc --noEmit -p packages/engine/tsconfig.json && tsc --noEmit -p tsconfig.test.json",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
-    "typescript": "^5.8.3",
-    "vitest": "^3.1.1"
+    "@eslint/js": "^9.29.0",
+    "eslint": "^9.29.0",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-unused-imports": "^4.2.0",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.42.0",
+    "tsdown": "^0.15.4",
+    "vitest": "^3.2.4"
   }
 }
